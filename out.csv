@@ -1,4 +1,4 @@
-ObjectId,Title
-617507b2-134f-4405-add0-87046916f968,test1
-3b809ce2-dcef-47d7-9353-435613118356,test2
-4bf17ae8-09ce-4f5a-b0fd-18e09bd1acb9,test3
+ObjectId,Title,Own
+93d2c49d-607c-444c-88fd-9eff8bb309ec,test1,true
+13dabe26-a05b-4422-93ae-e695e23ece41,test2,true
+d37602c6-a6b5-4223-9e81-f4a02abd9ea8,test3,true

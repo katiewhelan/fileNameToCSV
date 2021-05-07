@@ -1,4 +1,5 @@
 
+var filePathToReadFrom  = process.argv[2];
 const { v4: uuidv4 } = require('uuid');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const csvWriter = createCsvWriter({
@@ -6,13 +7,18 @@ const csvWriter = createCsvWriter({
   header: [
     {id: 'objectId', title: 'ObjectId'},
     {id: 'title', title: 'Title'},
+    {id: 'own', title:'Own'},
   ]
 });
 
 const path = require("path");
 const fs = require("fs");
-const directoryPath = path.join(__dirname, "files");
+//const directoryPath = path.join(__dirname, "files");
+const directoryPath = filePathToReadFrom;
 const data =[];
+
+
+console.log("This is the filepage " + filePathToReadFrom);
 
 fs.readdir(directoryPath, function(err, files) {
   if(err){
@@ -20,17 +26,16 @@ fs.readdir(directoryPath, function(err, files) {
   }
 
   files.forEach(function(file) {
-    var removeEndText = file.split('.')[0];
+    var nameToSave = file.split('.')[0];
     var newGuid = uuidv4();
     let obj = {
       objectId: newGuid,
       own: true,
-      title: removeEndText,
+      title: nameToSave,
     };
     data.push(obj);
 
-    console.log(removeEndText);
-
+    console.log("File Name to save " + nameToSave);
 
   });
   csvWriter
